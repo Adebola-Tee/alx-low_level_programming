@@ -4,42 +4,80 @@
 		
 /**
 		
- * create_array - create array of size size and assign char c
+ * str_concat - get ends of input and add together for size
 		
- * @size: size of array
+ * @s1: input one to concat
 		
- * @c: char to assign
+ * @s2: input two to concat
 		
- * Description: creat array of size size and assign char c
-		
- * Return: pointer to array, NULL if fail
-		
- *
+ * Return: concat of s1 and s2
 		
  */
 		
-char *create_array(unsigned int size, char c)
+char *str_concat(char *s1, char *s2)
 		
 {
 		
-	char *str;
+	char *conct;
 		
-	unsigned int i;
+	int i, ci;
 		
 
 		
-	str = malloc(sizeof(char) * size);
+	if (s1 == NULL)
 		
-	if (size == 0 || str == NULL)
+		s1 = "";
+		
+	if (s2 == NULL)
+		
+		s2 = "";
+		
+
+		
+		i = ci = 0;
+		
+	while (s1[i] != '\0')
+		
+		i++;
+		
+	while (s2[ci] != '\0')
+		
+		ci++;
+		
+	conct = malloc(sizeof(char) * (i + ci + 1));
+		
+
+		
+	if (conct == NULL)
 		
 		return (NULL);
 		
+	i = ci = 0;
+		
+	while (s1[i] != '\0')
+		
+	{
+		
+		conct[i] = s1[i];
+		
+		i++;
+		
+	}
+		
 
 		
-	for (i = 0; i < size; i++)
+	while (s2[ci] != '\0')
 		
-		str[i] = c;
+	{
 		
-	return (str);
+		conct[i] = s2[ci];
+		
+		i++, ci++;
+		
+	}
+		
+	conct[i] = '\0';
+		
+	return (conct);
 		
 }
